@@ -17,7 +17,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('sass', function() {
-	gulp.src('app/sass/**/*.scss')
+	gulp.src('app/scss/**/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(autoprefixer())
@@ -31,7 +31,9 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'browserSync'], function() {
 	gulp.watch('app/scss/**/*.scss', ['sass']);
+	gulp.watch('app/css/**/*.css', browserSync.reload)
 	// gulp.watch('app/js/*.js', 'uglify');
 	gulp.watch('app/index.html', browserSync.reload);
 
 })
+
