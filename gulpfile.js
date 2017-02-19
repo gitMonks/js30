@@ -32,7 +32,7 @@ gulp.task('sass', function() {
 gulp.task('watch', ['sass', 'browserSync'], function() {
 	gulp.watch('app/scss/**/*.scss', ['sass']);
 	gulp.watch('app/css/**/*.css', browserSync.reload)
-	// gulp.watch('app/js/*.js', 'uglify');
+	gulp.watch('app/js/*.js', browserSync.reload);
 	gulp.watch('app/index.html', browserSync.reload);
 
 })
