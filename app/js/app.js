@@ -12,11 +12,6 @@ function multiSelect(event) {
 
 	checkboxesArray.forEach((el, index) => {
 		event.shiftKey && el.checked ? selectedIndex.push(index) : "";
-		// if (event.shiftKey === true) {
-		// 	if(el.checked){
-		// 		selectedIndex.push(index);
-		// 	}
-		// }
 	});
 
 
