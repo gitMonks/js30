@@ -4,24 +4,35 @@ const player = document.querySelector('.player'),
 	progress = player.querySelector('.progress'),
 	progressBar = player.querySelector('.progress__filled'),
 	toggle = player.querySelector('.toggle'),
-	skitpButtons = player.querySelectorAll('[data-skip]'),
+	skipButtons = player.querySelectorAll('[data-skip]'),
 	ranges = player.querySelectorAll('.player__slider');
 
 /* Build our functions */
 function togglePlay() {
-	if(video.paused) {
-		video.play();
-	} else {
-		video.pause();
-	}
+	const method = video.paused ? 'play' : 'pause';
+	video[method]();
 }
 
 function updateButton() {
-	console.log('Update the button');
+	const icon = this.paused ? '►' : '❚ ❚'
+	toggle.textContent = icon;
+}
+
+function skip() {
+	console.log(this.dataset.skip);
+	video.currentTime += parseFloat(this.dataset.skip);
+}
+
+function handleRangeUpdate() {
+	video[this.name] = this.value;
+	console.log(this.name, this.value)
 }
 /* Hook up the event listeners */
 
 video.addEventListener('click', togglePlay);
 toggle.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
-video.addEventListener('pause', updateButton)
+video.addEventListener('pause', updateButton);
+skipButtons.forEach(button => button.addEventListener('click', skip));
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
