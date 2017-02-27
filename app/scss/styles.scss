@@ -1,0 +1,13 @@
+.wrapper {
+  position: relative;
+  perspective: 1000px;
+}
+
+.box {
+  background-color: goldenrod;
+  height: 150px;
+  width: 150px;
+  transform-origin: top left;
+  transform: rotateX(-90deg);
+  transition: all 2s ease-in-out;
+}
